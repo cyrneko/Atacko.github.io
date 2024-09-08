@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        @font-face {
+            font-family: 'DisposableDroid';
+            src: url('../fonts/Disposabledroidbb-y3qM.otf');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'DisposableDroid', sans-serif;
+        }
+
+        .loading-text {
+            font-family: 'DisposableDroid', sans-serif;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+            word-spacing: 0.3em;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 0, 0, 0.1);
+            border-top: 8px solid #ff0000; 
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <title>Loading...</title>
+</head>
+
+<body>
+    <div class="loading-text">
+        <p>Loading...</p>
+    </div>
+    <div class="loading-spinner"></div>
+
+    <script>
+        setTimeout(function () {
+            window.location.href = 'index.html';
+        }, 1500);
+    </script>
+</body>
+
+</html>

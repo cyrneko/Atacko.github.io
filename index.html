@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/img/favicon.png" rel="icon">
+  <title>Atacko's Desktop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <!-- Taskbar -->
+  <div class="taskbar d-flex justify-content-between align-items-center fixed-bottom">
+    <div class="taskbar-left d-flex align-items-center">
+      <button class="start-btn btn p-0" data-bs-toggle="collapse" data-bs-target="#startMenu">
+        <img src="assets/img/startbutton.png" alt="Start Button" class="start-icon">
+      </button>
+      <div class="taskbar-icons d-flex align-items-center">
+        <a href="https://www.twitter.com/example" target="_blank"></a>
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://t.me/example" target="_blank"></a>
+          <i class="fab fa-telegram"></i>
+        </a>
+        <a href="https://discord.com/example" target="_blank"></a>
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://www.instagram.com/example" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/example" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+    <div class="system-tray d-flex align-items-center">
+      <i class="fas fa-wifi"></i>
+      <i class="fas fa-volume-up"></i>
+      <span id="time" class="time"></span>
+    </div>
+  </div>
+
+  <!-- Window Container -->
+  <div id="windows-container">
+    <!-- Windows will be dynamically added here -->
+  </div>
+
+  <!-- Desktop Icons -->
+  <div id="desktop-icons">
+    <div class="desktop-icon" data-window="window1" data-url="beamng-mods.html">
+      <img src="assets/img/beamngicon.png" alt="Icon 1">
+      <p>BeamNG Mods</p>
+    </div>
+    <div class="desktop-icon" data-window="window2" data-url="github.html">
+      <img src="assets/img/githubicon.png" alt="Icon 2">
+      <p>GitHub</p>
+    </div>
+    <div class="desktop-icon" data-window="window3" data-url="steam-accounts.html">
+      <img src="assets/img/steamicon.png" alt="Icon 3">
+      <p>Steam Accounts</p>
+    </div>
+    <div class="desktop-icon" data-window="window4" data-url="content.html">
+      <img src="assets/img/youtubeicon.png" alt="Icon 4">
+      <p>Content</p>
+    </div>
+    <div class="desktop-icon" data-window="window5"
+      data-url="https://aikowolfo.carrd.co/?fbclid=PAZXh0bgNhZW0CMTEAAabKWXUTq80jt7RFQi_nPc7TArp8JLn9rW8pd26gnGkiJW-Q8EoAP3i2ooc_aem_QXI5qsBF_Lj1WGUnkJv5dA">
+      <img src="assets/img/aiko.png" alt="Icon 5">
+      <p>Art Credits</p>
+    </div>
+
+  </div>
+  </div>
+
+  <!-- Include Bootstrap JS (required for collapse and other interactive elements) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

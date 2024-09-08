@@ -1,0 +1,73 @@
+/* Font Face Declaration */
+@font-face {
+    font-family: 'DisposableDroid';
+    src: url('../fonts/Disposabledroidbb-y3qM.otf');
+}
+
+:root {
+    --default-font: 'DisposableDroid', sans-serif;
+    --heading-font: 'DisposableDroid', sans-serif;
+    --nav-font: 'DisposableDroid', sans-serif;
+}
+
+/* General Body Styles */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: var(--default-font);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+.header {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    padding: 20px 0;
+    font-family: var(--heading-font);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Mod Card Styles */
+.mod-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: .25rem;
+    overflow: hidden;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.2);
+    margin-bottom: 20px;
+    font-family: var(--default-font);
+}
+
+.mod-cover {
+    width: 100%;
+    height: auto;
+}
+
+.mod-info {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mod-info h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: var(--heading-font);
+}
+
+/* Button Styles */
+.mod-info .btn {
+    background-color: #630000; /* Dark red color */
+    border-color: #630000; /* Dark red color */
+}
+
+.mod-info .btn:hover {
+    background-color: #3f0000; /* Darker red color */
+    border-color: #3f0000; /* Darker red color */
+}
