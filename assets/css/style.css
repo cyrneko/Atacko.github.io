@@ -167,7 +167,7 @@ body, html {
 .window-content {
     padding: 10px;
     height: calc(100% - 40px);
-    overflow: auto;
+    overflow: hidden;
 }
 
 .resize-handle {
