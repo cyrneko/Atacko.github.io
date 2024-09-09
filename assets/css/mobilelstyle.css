@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'ARCADE';
+    src: url('../fonts/ARCADE.TTF') format('truetype');
+}
+
+:root {
+    --default-font: 'ARCADE', sans-serif;
+    --heading-font: 'ARCADE', sans-serif;
+    --nav-font: 'ARCADE', sans-serif;
+    
+    --background: #000;
+    --selection: #160000;
+    --comment: #e90000;
+    --purple: #5c0000;
+    --white: #f8f8f2;
+    --pink: #e90000;
+}
+
+body {
+    font-family: var(--default-font);
+    background-color: var(--background);
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    text-align: center;
+    color: var(--comment);
+    font-family: var(--default-font);
+    font-size: 1rem; /* Increased font size */
+    font-weight: 400;
+}
+
+#userPhoto {
+    width: 96px;
+    height: 96px;
+    display: block;
+    margin: 35px auto 20px;
+    border-radius: 50%;
+    border: solid var(--purple) 2px;
+}
+
+#userName {
+    width: 100%;
+    color: var(--pink);
+    font-family: var(--default-font);
+    font-size: 1.25rem; /* Increased font size */
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.25;
+    display: block;
+}
+
+#links {
+    max-width: 675px;
+    width: auto;
+    display: block;
+    margin: 27px auto;
+}
+
+.link {
+    display: block;
+    margin-bottom: 20px;
+    padding: 17px;
+    background-color: var(--background);
+    color: var(--comment);
+    font-family: var(--default-font);
+    font-size: 1.25rem; /* Increased font size */
+    font-weight: 500;
+    border-radius: 5px;
+    border: solid var(--purple) 1px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99);
+}
+
+.link:hover {
+    background-color: var(--selection);
+    color: var(--purple);
+}

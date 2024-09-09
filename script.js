@@ -182,11 +182,17 @@ function addWindowEvents(win) {
 // Initialize desktop icons
 document.querySelectorAll('.desktop-icon').forEach(icon => {
   icon.addEventListener('click', function() {
-    const windowTitle = this.querySelector('p').textContent; // Get the icon's text
-    const windowUrl = this.getAttribute('data-url'); // Get the icon's URL (to load the page in iframe)
-    const windowId = `window-${windowTitle.toLowerCase().replace(/\s+/g, '-')}`; // Create a unique id for each window
+    const url = this.getAttribute('data-url');
+    const isNewTab = this.getAttribute('target') === '_blank';
 
-    createWindow(windowId, windowTitle, windowUrl);
+    if (isNewTab) {
+      window.open(url, '_blank');
+    } else {
+      const windowTitle = this.querySelector('p').textContent; // Get the icon's text
+      const windowId = `window-${windowTitle.toLowerCase().replace(/\s+/g, '-')}`; // Create a unique id for each window
+
+      createWindow(windowId, windowTitle, url);
+    }
   });
 });
 
