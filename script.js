@@ -76,7 +76,7 @@ function createWindow(id, title, url) {
   addWindowEvents(windowDiv);
 }
 
-// Function to add event listeners for a window
+// Function to add event listeners for a window, supporting both mouse and touch events
 function addWindowEvents(win) {
   const header = win.querySelector('.window-header');
   const resizeHandle = win.querySelector('.resize-handle');
@@ -84,26 +84,36 @@ function addWindowEvents(win) {
 
   // Bring window to front when clicked
   win.addEventListener('mousedown', () => bringWindowToFront(win));
+  win.addEventListener('touchstart', () => bringWindowToFront(win));
 
-  // Make window draggable
-  header.addEventListener('mousedown', function(e) {
+  // Handle drag (mouse + touch)
+  header.addEventListener('mousedown', startDrag);
+  header.addEventListener('touchstart', startDrag, { passive: false });
+
+  function startDrag(e) {
+    e.preventDefault();
     const rect = win.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left;
-    const offsetY = e.clientY - rect.top;
+    const offsetX = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    const offsetY = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
 
     // Disable pointer events for iframe while dragging
     if (iframe) {
       iframe.style.pointerEvents = 'none';
     }
 
-    const moveFn = function(e) {
-      win.style.left = e.clientX - offsetX + 'px';
-      win.style.top = e.clientY - offsetY + 'px';
-    };
+    const moveFn = throttle((e) => {
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      win.style.left = clientX - offsetX + 'px';
+      win.style.top = clientY - offsetY + 'px';
+    }, 10);
 
     function onMouseUp() {
       document.removeEventListener('mousemove', moveFn);
       document.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('touchmove', moveFn);
+      document.removeEventListener('touchend', onMouseUp);
+
       // Re-enable pointer events for iframe after dragging
       if (iframe) {
         iframe.style.pointerEvents = 'auto';
@@ -112,13 +122,18 @@ function addWindowEvents(win) {
 
     document.addEventListener('mousemove', moveFn);
     document.addEventListener('mouseup', onMouseUp);
-  });
+    document.addEventListener('touchmove', moveFn);
+    document.addEventListener('touchend', onMouseUp);
+  }
 
-  // Make window resizable with requestAnimationFrame for smooth resizing
-  resizeHandle.addEventListener('mousedown', function(e) {
+  // Handle resize (mouse + touch)
+  resizeHandle.addEventListener('mousedown', startResize);
+  resizeHandle.addEventListener('touchstart', startResize, { passive: false });
+
+  function startResize(e) {
     e.preventDefault();
-    const startX = e.clientX;
-    const startY = e.clientY;
+    const startX = e.touches ? e.touches[0].clientX : e.clientX;
+    const startY = e.touches ? e.touches[0].clientY : e.clientY;
     const startWidth = win.offsetWidth;
     const startHeight = win.offsetHeight;
 
@@ -127,32 +142,25 @@ function addWindowEvents(win) {
       iframe.style.pointerEvents = 'none';
     }
 
-    let isResizing = true;
-
-    function resizeFn(e) {
-      if (!isResizing) return;
-
-      let newWidth = startWidth + (e.clientX - startX);
-      let newHeight = startHeight + (e.clientY - startY);
+    const resizeFn = throttle((e) => {
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      let newWidth = startWidth + (clientX - startX);
+      let newHeight = startHeight + (clientY - startY);
 
       newWidth = Math.max(newWidth, MIN_WIDTH);
       newHeight = Math.max(newHeight, MIN_HEIGHT);
 
       win.style.width = `${newWidth}px`;
       win.style.height = `${newHeight}px`;
-    }
-
-    function animationLoop() {
-      if (isResizing) {
-        requestAnimationFrame(animationLoop);
-      }
-    }
-    requestAnimationFrame(animationLoop);
+    }, 10);
 
     function onMouseUp() {
-      isResizing = false;
       document.removeEventListener('mousemove', resizeFn);
       document.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('touchmove', resizeFn);
+      document.removeEventListener('touchend', onMouseUp);
+
       // Re-enable pointer events for iframe after resizing
       if (iframe) {
         iframe.style.pointerEvents = 'auto';
@@ -161,7 +169,9 @@ function addWindowEvents(win) {
 
     document.addEventListener('mousemove', resizeFn);
     document.addEventListener('mouseup', onMouseUp);
-  });
+    document.addEventListener('touchmove', resizeFn);
+    document.addEventListener('touchend', onMouseUp);
+  }
 
   // Close button functionality
   win.querySelector('.close-btn').addEventListener('click', function() {
