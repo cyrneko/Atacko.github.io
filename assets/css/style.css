@@ -21,6 +21,7 @@ body, html {
     font-family: var(--default-font);
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Prevent any scrollbars on the page */
     background: url('../img/wallpaper.jpg') no-repeat center center fixed;
     background-size: cover;
 }
@@ -89,14 +90,15 @@ body, html {
 /* Desktop Icons */
 #desktop-icons {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 50px);
+    top: 20px; /* Space from the top */
+    left: 20px; /* Space from the left */
+    width: calc(100% - 20px); /* Full width minus the left space */
+    height: calc(100vh - 70px); /* Full height minus the top space and taskbar height */
     display: flex;
     flex-direction: column;
     gap: 10px;
     z-index: 1;
+    overflow: hidden; /* Ensure no scrollbars appear */
 }
 
 .desktop-icon {
@@ -178,6 +180,37 @@ body, html {
     cursor: nwse-resize;
 }
 
+/* Loading text */
 .loading-text p {
     color: crimson;
+}
+
+/* Make desktop icons and windows more mobile-friendly */
+@media (max-width: 768px) {
+    #desktop-icons {
+        width: 100%; /* Full width for mobile */
+        gap: 20px;
+    }
+    
+    .desktop-icon {
+        width: 48px;
+    }
+    
+    .desktop-icon img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .desktop-icon p {
+        font-size: 10px;
+    }
+
+    .window {
+        width: 80vw; /* Use a percentage of the screen for window width */
+        height: 40vh; /* Adjust window height */
+    }
+
+    .window-header {
+        padding: 10px;
+    }
 }
