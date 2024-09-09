@@ -87,8 +87,10 @@ function addWindowEvents(win) {
   win.addEventListener('touchstart', () => bringWindowToFront(win));
 
   // Handle drag (mouse + touch)
-  header.addEventListener('mousedown', startDrag);
-  header.addEventListener('touchstart', startDrag, { passive: false });
+  if (header) {
+    header.addEventListener('mousedown', startDrag);
+    header.addEventListener('touchstart', startDrag, { passive: false });
+  }
 
   function startDrag(e) {
     e.preventDefault();
@@ -127,8 +129,10 @@ function addWindowEvents(win) {
   }
 
   // Handle resize (mouse + touch)
-  resizeHandle.addEventListener('mousedown', startResize);
-  resizeHandle.addEventListener('touchstart', startResize, { passive: false });
+  if (resizeHandle) {
+    resizeHandle.addEventListener('mousedown', startResize);
+    resizeHandle.addEventListener('touchstart', startResize, { passive: false });
+  }
 
   function startResize(e) {
     e.preventDefault();
@@ -174,49 +178,60 @@ function addWindowEvents(win) {
   }
 
   // Close button functionality
-  win.querySelector('.close-btn').addEventListener('click', function() {
-    win.remove();
-  });
+  const closeButton = win.querySelector('.close-btn');
+  if (closeButton) {
+    closeButton.addEventListener('click', function() {
+      win.remove();
+    });
+  }
 }
 
-// Initialize desktop icons
-document.querySelectorAll('.desktop-icon').forEach(icon => {
-  icon.addEventListener('click', function() {
-    const url = this.getAttribute('data-url');
-    const isNewTab = this.getAttribute('target') === '_blank';
+// Ensure script runs after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize desktop icons
+  document.querySelectorAll('.desktop-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+      const url = this.getAttribute('data-url');
+      const isNewTab = this.getAttribute('target') === '_blank';
 
-    if (isNewTab) {
-      window.open(url, '_blank');
-    } else {
-      const windowTitle = this.querySelector('p').textContent; // Get the icon's text
-      const windowId = `window-${windowTitle.toLowerCase().replace(/\s+/g, '-')}`; // Create a unique id for each window
+      if (isNewTab) {
+        window.open(url, '_blank');
+      } else {
+        const windowTitle = this.querySelector('p').textContent; // Get the icon's text
+        const windowId = `window-${windowTitle.toLowerCase().replace(/\s+/g, '-')}`; // Create a unique id for each window
 
-      createWindow(windowId, windowTitle, url);
+        createWindow(windowId, windowTitle, url);
+      }
+    });
+  });
+
+  const musicButton = document.querySelector('.taskbar-icons .fa-music');
+  if (musicButton) {
+    musicButton.addEventListener('click', function(event) {
+      event.preventDefault(); 
+      const windowId = 'window-music'; 
+      const windowTitle = 'Music'; 
+      const windowUrl = 'music.html'; 
+
+      createWindow(windowId, windowTitle, windowUrl);
+    });
+  }
+
+  // Update time
+  function updateTime() {
+    const timeElement = document.getElementById('time');
+    if (timeElement) { // Check if the element exists
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const period = hours >= 12 ? 'PM' : 'AM';
+      const formattedHours = hours % 12 || 12;
+      const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+      
+      timeElement.textContent = `${formattedHours}:${formattedMinutes} ${period}`;
     }
-  });
+  }
+
+  setInterval(updateTime, 1000); // Update every second
+  updateTime(); // Call immediately to set initial time
 });
-
-document.querySelector('.taskbar-icons .fa-music').addEventListener('click', function(event) {
-  event.preventDefault(); 
-  const windowId = 'window-music'; 
-  const windowTitle = 'Music'; 
-  const windowUrl = 'music.html'; 
-
-  createWindow(windowId, windowTitle, windowUrl);
-});
-
-// Update time
-function updateTime() {
-  const timeElement = document.getElementById('time');
-  const now = new Date();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
-  const period = hours >= 12 ? 'PM' : 'AM';
-  const formattedHours = hours % 12 || 12;
-  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-  
-  timeElement.textContent = `${formattedHours}:${formattedMinutes} ${period}`;
-}
-
-setInterval(updateTime, 1000); // Update every second
-updateTime(); // Call immediately to set initial time
