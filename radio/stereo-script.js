@@ -8,7 +8,7 @@ const reels = document.querySelectorAll(".reel");
 let audioSource;
 
 const audio = new Audio();
-audio.src = "http://radiosource.atacko.cc/radio.mp3"; 
+audio.src = "https://radiosource.atacko.cc/radio.mp3"; 
 audio.crossOrigin = "anonymous";
 audio.loop = true;
 audio.volume = 0.5;
