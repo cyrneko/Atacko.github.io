@@ -1,0 +1,308 @@
+@font-face {
+    font-family: 'Arcade';
+    src: url('assets/arcade/ARCADE.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'Arcade' !important;
+}
+
+body {
+    background: black;
+    color: white;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body, label, .stereo-header, .button-label {
+    color: #00e7ff !important;
+}
+
+.play-pause-container .button-label {
+    font-size: 21px;
+    text-align: center;
+    margin-top: 12px;
+    display: block;
+}
+
+.stereo-container {
+    width: 800px;
+    background: linear-gradient(to bottom, #333, #111);
+    border: 6px solid #00e7ff;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 100px #a300ff;
+    position: relative;
+}
+
+.stereo-header {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    animation: pulse-shadow 1s infinite ease-in-out;
+}
+
+.spectrum-analyzer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 370px;
+    border: 3px solid #00e7ff;
+    padding: 5px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar {
+    background: linear-gradient(to top, #1f025f, #a300ff, #024785, #00ffcf);
+    width: 5%;
+    height: 10%;
+    transition: height 0.1s ease-in-out;
+    --height: 0%;
+}
+
+.bar {
+    height: var(--height);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.stereo-button {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #642389 40%, #111 100%);
+    border: 2px solid #00e7ff;
+    color: #00e7ff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00e7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.stereo-button:hover {
+    box-shadow: 0 0 5px #00e7ff, 0 0 25px #00e7ff, 0 0 100px #a300ff;
+}
+
+.stereo-button.active {
+    background: linear-gradient(to bottom, #222, #111);
+    box-shadow: 0 0 50px #00e7ff, 0 0 15px #a300ff inset;
+    color: white;
+    font-weight: bold;
+}
+
+.knob-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.volume-knob,
+.bass-knob,
+.treble-knob {
+    width: 85px;
+    height: 85px;
+    background: radial-gradient(circle, #642389 40%, #111 100%);
+    border: 2px solid #00e7ff;
+    border-radius: 50%;
+    box-shadow: 0 0 30px #00e7ff;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.volume-knob:hover,
+.bass-knob:hover,
+.treble-knob:hover {
+    box-shadow: 0 0 5px #00e7ff, 0 0 25px #00e7ff, 0 0 50px #a300ff;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.volume-knob::after,
+.bass-knob::after,
+.treble-knob::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #00e7ff;
+    border-radius: 50%;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -5%);
+    box-shadow: 0 0 10px #00e7ff;
+}
+
+.reel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.5;
+}
+
+.reel {
+    --reel-size: 350px;
+    width: var(--reel-size);
+    height: var(--reel-size);
+    background-image: url("assets/img/reel.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: none;
+}
+
+@keyframes spin-reel {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.reel.spin {
+    animation: spin-reel 2s linear infinite;
+}
+
+.power-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+#power-button {
+    width: 125px;
+    height: 125px;
+    display: block;
+    object-fit: contain;
+}
+
+.button-label {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+}
+
+.play-pause-container {
+    display: flex;
+    gap: 15px;
+}
+
+.mp3-source-container {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+}
+
+.input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.mp3-label {
+    color: #00e7ff;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.mp3-input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #00e7ff;
+    border-radius: 5px;
+    background: black;
+    color: white;
+}
+
+.mp3-input:focus {
+    border-color: #a300ff;
+}
+
+#update-source {
+    padding: 10px 20px;
+    font-size: 16px;
+    height: 100%; /* Match input height */
+    border: none;
+    background: #00e7ff;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#update-source:hover {
+    background: #00c7ff;
+}
+
+@keyframes pulse-shadow {
+    0% {
+        text-shadow: 0 0 5px #a300ff, 0 0 15px #a300ff, 0 0 30px #a300ff;
+    }
+    50% {
+        text-shadow: 0 0 10px #7a00b3, 0 0 25px #7a00b3, 0 0 50px #7a00b3;
+    }
+    100% {
+        text-shadow: 0 0 5px #a300ff, 0 0 15px #a300ff, 0 0 30px #a300ff;
+    }
+}
+
+.warning {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    color: white; 
+    text-align: center; 
+    padding: 10px 0;
+    font-size: 14px; 
+    z-index: 1000; 
+}
+
+.warning-label {
+    margin: 0; 
+    padding: 0;
+    font-family: 'DisposableDroid', sans-serif; 
+}
