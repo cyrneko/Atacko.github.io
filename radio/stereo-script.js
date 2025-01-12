@@ -83,8 +83,12 @@ powerButton.addEventListener("click", () => {
 
 playButton.addEventListener("click", async () => {
   try {
-    await audioContext.resume();
-    audio.play();
+    // Ensure the AudioContext is resumed after a user gesture
+    if (audioContext.state === "suspended") {
+      await audioContext.resume();
+    }
+    
+    await audio.play();
 
     reels.forEach((reel) => reel.classList.add("spin"));
 
