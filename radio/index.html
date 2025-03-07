@@ -49,21 +49,22 @@
             <div class="play-pause-container">
                 <div>
                     <button id="play" class="stereo-button" aria-label="Play">
-                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <polygon points="5,3 19,12 5,21" fill="white" />
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="5,3 19,12 5,21" />
                         </svg>
                     </button>
                     <label class="button-label">Play</label>
                 </div>
+                
                 <div>
                     <button id="pause" class="stereo-button" aria-label="Pause">
-                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="5" y="3" width="4" height="18" fill="white" />
-                            <rect x="15" y="3" width="4" height="18" fill="white" />
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="3" width="4" height="18" />
+                            <rect x="15" y="3" width="4" height="18" />
                         </svg>
                     </button>
                     <label class="button-label">Pause</label>
-                </div>
+                </div>                
             </div>            
             <div class="knob-container">
                 <div id="bass-knob" class="bass-knob"></div>
@@ -91,14 +92,27 @@
         <div class="input-wrapper">
             <input type="text" id="mp3-source" class="mp3-input" placeholder="Enter MP3 URL">
             <button id="update-source" class="stereo-button">Update</button>
+            <button id="theme-button" class="theme-button">THEME</button>
         </div>
     </div>
     </div>
-
-    <div class="warning">
-        <label class="warning-label">Warning, loading this site on safari will completely break audio playback and visuals.</label>
+    <div id="theme-popup" class="theme-popup">
+        <div class="theme-popup-header">
+            <span>Theme Settings</span>
+            <div class="theme-buttons">
+                <button id="download-css" class="theme-action">Download css</button>
+                <button id="import-css" class="theme-action">Import Custom CSS</button>
+                <button id="reset-theme" class="theme-action">Reset Theme</button>
+                <button id="close-popup" class="close-popup">X</button>
+            </div>
+        </div> 
+        <ul class="theme-list">
+            <li class="theme-item" data-css="TransTheme.css">Trans Theme <button class="load-action load-theme">Load</button></li>
+            <li class="theme-item" data-css="LemonTheme.css">Lemon Theme <button class="load-action load-theme">Load</button></li>
+            <li class="theme-item" data-css="TacoTheme.css">Taco Theme <button class="load-action load-theme">Load</button></li>
+        </ul>              
     </div>
-    
+        
     <script src="stereo-script.js"></script>
 </body>
 

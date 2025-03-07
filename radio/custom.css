@@ -184,6 +184,7 @@ body, label, .stereo-header, .button-label {
     width: var(--reel-size);
     height: var(--reel-size);
     background-image: url("assets/img/reel.png");
+    /* ^^ this can either be reel, reelW, reelY, reelR ^^ */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
