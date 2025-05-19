@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minesweeper</title>
+  <link rel="stylesheet" href="minesweeper.css">
+</head>
+<body>
+  <div class="minesweeper">
+    <div class="game-header">
+      <div class="counter mine-counter">
+        <div class="digit" id="mine-hundreds">0</div>
+        <div class="digit" id="mine-tens">1</div>
+        <div class="digit" id="mine-ones">0</div>
+      </div>
+      <div class="face" id="face">😊</div>
+      <div class="counter timer">
+        <div class="digit" id="timer-hundreds">0</div>
+        <div class="digit" id="timer-tens">0</div>
+        <div class="digit" id="timer-ones">0</div>
+      </div>
+    </div>
+    <div class="game-board" id="game-board"></div>
+  </div>
+  <script src="minesweeper.js"></script>
+</body>
+</html>

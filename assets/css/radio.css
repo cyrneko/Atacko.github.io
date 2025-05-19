@@ -1,0 +1,225 @@
+/* Windows 95 Font */
+@font-face {
+    font-family: "W95FA";
+    src: url("../fonts/W95FA.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* Digital Display Font */
+  @font-face {
+    font-family: "Digital";
+    src: url("../fonts/digital-7.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "W95FA", sans-serif;
+    background-color: #c0c0c0;
+    color: #000;
+    font-size: 12px;
+    overflow: hidden;
+  }
+  
+  .radio-player {
+    width: 320px;
+    margin: 0 auto;
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Title Bar */
+  .title-bar {
+    height: 18px;
+    background-color: #000080;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 3px;
+    font-weight: bold;
+  }
+  
+  .window-controls {
+    display: flex;
+  }
+  
+  .window-button {
+    width: 16px;
+    height: 14px;
+    margin-left: 2px;
+    background-color: #c0c0c0;
+    border: 1px outset #ffffff;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .window-button:active {
+    border: 1px inset #ffffff;
+  }
+  
+  /* Menu Bar */
+  .menu-bar {
+    height: 20px;
+    background-color: #c0c0c0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #808080;
+  }
+  
+  .menu-item {
+    padding: 0 8px;
+    cursor: pointer;
+  }
+  
+  .menu-item:hover {
+    background-color: #000080;
+    color: white;
+  }
+  
+  .help-menu {
+    margin-left: auto;
+  }
+  
+  /* Display */
+  .display {
+    height: 60px;
+    background-color: #000000;
+    color: #00ff00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    font-family: "Digital", monospace;
+    border: 2px inset #808080;
+    margin: 5px;
+  }
+  
+  .track-info,
+  .time-info,
+  .mode-info,
+  .khz-info,
+  .kbps-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .track-label,
+  .mode-label,
+  .khz-label,
+  .kbps-label {
+    font-size: 8px;
+    color: #00aa00;
+  }
+  
+  .track-number,
+  .mode-value,
+  .khz-value,
+  .kbps-value {
+    font-size: 14px;
+  }
+  
+  #time-display {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Controls */
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: #c0c0c0;
+  }
+  
+  .control-button {
+    width: 40px;
+    height: 25px;
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    cursor: pointer;
+    font-family: "W95FA", sans-serif;
+    font-size: 14px;
+  }
+  
+  .control-button:active {
+    border: 2px inset #ffffff;
+  }
+  
+  /* Volume Slider */
+  .volume-slider-container {
+    display: none;
+    padding: 10px;
+    background-color: #c0c0c0;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+  }
+  
+  .volume-slider-track {
+    height: 20px;
+    background-color: #ffffff;
+    border: 2px inset #808080;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  
+  .volume-slider-thumb {
+    width: 10px;
+    height: 18px;
+    background-color: #c0c0c0;
+    border: 1px outset #ffffff;
+    position: absolute;
+    top: 0;
+    left: 50%; /* Default position at 50% */
+    cursor: pointer;
+  }
+  
+  #volume-display {
+    text-align: center;
+    font-family: "W95FA", sans-serif;
+    font-size: 12px;
+  }
+  
+  /* Status Bar */
+  .status-bar {
+    height: 15px;
+    background-color: #c0c0c0;
+    border-top: 1px solid #808080;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px;
+  }
+  
+  .status-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000;
+    margin-right: 5px;
+  }
+  
+  /* Active States */
+  .playing .status-indicator {
+    background-color: #00ff00;
+  }
+  
+  .paused .status-indicator {
+    background-color: #ffff00;
+  }
+  
+  .stopped .status-indicator {
+    background-color: #ff0000;
+  }
+  
+  /* Show volume slider when active */
+  .volume-active .volume-slider-container {
+    display: block;
+  }
+  

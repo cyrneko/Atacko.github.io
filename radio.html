@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio</title>
+  <link rel="stylesheet" href="assets/css/radio.css">
+</head>
+<body>
+  <div class="radio-player">
+    <div class="title-bar">
+      <div class="title-text">Radio</div>
+      <div class="window-controls">
+        <button class="window-button minimize">_</button>
+        <button class="window-button maximize">□</button>
+        <button class="window-button close">×</button>
+      </div>
+    </div>
+    
+    <div class="menu-bar">
+      <div class="menu-item">File</div>
+      <div class="menu-item">Options</div>
+      <div class="menu-item help-menu">Help</div>
+    </div>
+    
+    <div class="display">
+      <div class="track-info">
+        <div class="track-label">TRACK</div>
+        <div class="track-number">01</div>
+      </div>
+      <div class="time-info">
+        <div id="time-display">0:00</div>
+      </div>
+      <div class="mode-info">
+        <div class="mode-label">MODE</div>
+        <div class="mode-value">ST</div>
+      </div>
+      <div class="khz-info">
+        <div class="khz-label">KHz</div>
+        <div class="khz-value">44</div>
+      </div>
+      <div class="kbps-info">
+        <div class="kbps-label">Kbps</div>
+        <div class="kbps-value">128</div>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <button id="play-button" class="control-button">▶</button>
+      <button id="stop-button" class="control-button">■</button>
+      <button id="pause-button" class="control-button">❚❚</button>
+      <button id="prev-button" class="control-button">◀◀</button>
+      <button id="next-button" class="control-button">▶▶</button>
+      <button id="volume-button" class="control-button">🔊</button>
+    </div>
+    
+    <div id="volume-slider-container" class="volume-slider-container">
+      <div class="volume-slider-track">
+        <div id="volume-slider-thumb" class="volume-slider-thumb"></div>
+      </div>
+      <div id="volume-display">50%</div>
+    </div>
+    
+    <div class="status-bar">
+      <div class="status-indicator"></div>
+    </div>
+  </div>
+  
+  <script src="assets/js/radio.js"></script>
+</body>
+</html>

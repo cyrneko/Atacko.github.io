@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #c0c0c0;
+    font-family: "W95FA", Arial, sans-serif;
+    overflow: hidden;
+  }
+  
+  .minesweeper {
+    width: 320px;
+    margin: 0 auto;
+    border: 3px outset #c0c0c0;
+    background-color: #c0c0c0;
+    padding: 5px;
+  }
+  
+  .game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c0c0c0;
+    border: 3px inset #c0c0c0;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .counter {
+    display: flex;
+    background-color: black;
+    color: red;
+    font-family: monospace;
+    height: 30px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .digit {
+    font-size: 28px;
+    font-weight: bold;
+    color: red;
+  }
+  
+  .face {
+    width: 30px;
+    height: 30px;
+    background-color: #c0c0c0;
+    border: 2px outset #c0c0c0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .face:active {
+    border: 2px inset #c0c0c0;
+  }
+  
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 0;
+    border: 3px inset #c0c0c0;
+    background-color: #c0c0c0;
+  }
+  
+  .cell {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .cell-covered {
+    border: 2px outset #c0c0c0;
+    background-color: #c0c0c0;
+  }
+  
+  .cell-uncovered {
+    border: 1px solid #808080;
+    background-color: #c0c0c0;
+  }
+  
+  .cell-flagged::after {
+    content: "🚩";
+    font-size: 16px;
+  }
+  
+  .cell-question::after {
+    content: "?";
+    color: black;
+    font-weight: bold;
+  }
+  
+  .cell-mine {
+    background-color: red;
+  }
+  
+  .cell-mine::after {
+    content: "💣";
+    font-size: 16px;
+  }
+  
+  .cell-1 {
+    color: blue;
+  }
+  .cell-2 {
+    color: green;
+  }
+  .cell-3 {
+    color: red;
+  }
+  .cell-4 {
+    color: darkblue;
+  }
+  .cell-5 {
+    color: brown;
+  }
+  .cell-6 {
+    color: teal;
+  }
+  .cell-7 {
+    color: black;
+  }
+  .cell-8 {
+    color: gray;
+  }
+  
+  /* Import W95FA font from parent document */
+  @font-face {
+    font-family: "W95FA";
+    src: url("assets/fonts/W95FA.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
